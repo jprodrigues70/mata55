@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package buyBeans;
+package src;
 
 /**
  *
  * @author jpr70
  */
-public class Expense extends Transaction {
+public class Income extends Transaction {
+
+    public Income(float value, String description) {
+        super(value, description);
+    }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package buyBeans;
+package src;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ public class Account {
         this.expenses = new ArrayList <>();
     }
     
-    public void addIncome() {
-        Income income = new Income();
+    public void addIncome(float value, String description) {
+        Income income = new Income(value, description);
         this.incomes.add(income);
     }
     

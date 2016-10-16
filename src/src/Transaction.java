@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package buyBeans;
+package src;
 
 /**
  *
@@ -13,11 +13,12 @@ abstract class Transaction {
     private float value;
     private String description;
     
-    Transaction() {
-        
+    Transaction(float value, String description) {
+        this.setValue(value);
+        this.setDescription(description);
     }
     
-    public void setValue(float value) {
+    public final void setValue(float value) {
         this.value = value;
     }
     
@@ -25,7 +26,7 @@ abstract class Transaction {
         return this.value;
     }
     
-    public void setDescription(String description) {
+    public final void setDescription(String description) {
         this.description = description;
     }
     
