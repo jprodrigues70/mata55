@@ -31,11 +31,10 @@ public class App extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
+        setTitle("BuyBeans");
         
-        Account account = new Account();
-
-        final JPanel nePage = new NewExpense(account);
-        final JPanel niPage = new NewIncome(account);
+        final Account account = new Account();
+        final JPanel home = new NewIncome(account);
         final Menu menu = new Menu();
 
         ActionListener actionListener = new ActionListener() {
@@ -43,9 +42,16 @@ public class App extends javax.swing.JFrame {
             public void actionPerformed( ActionEvent e ) {
                 JPanel panelTrocar = null;
                 if ( e.getSource() == menu.newIncome ) {
-                    panelTrocar = niPage;
-                } else {
-                    panelTrocar = nePage;
+                    panelTrocar = new NewIncome(account);
+                } 
+                if ( e.getSource() == menu.newExpense ){
+                    panelTrocar = new NewExpense(account);
+                } 
+                if ( e.getSource() == menu.incomesList ){
+                    panelTrocar = new Incomes(account);
+                } 
+                if ( e.getSource() == menu.expensesList ){
+                    panelTrocar = new Expenses(account);
                 }
 
                 getContentPane().removeAll();
@@ -59,11 +65,9 @@ public class App extends javax.swing.JFrame {
         };
 
         setJMenuBar(menu.init(actionListener));
-
-        add( niPage );
+        add( home );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         pack();
     }
 }

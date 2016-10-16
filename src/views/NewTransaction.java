@@ -15,26 +15,36 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import src.Account;
-import src.Expense;
 
 /**
  *
  * @author jpr70
  */
 public class NewTransaction extends javax.swing.JPanel implements ActionListener {
+    protected JLabel title;    
+    protected JLabel total;
+    
     private JLabel DateLabel;
     private JFormattedTextField date;
-    JTextField description;
+    
     private JLabel descriptionLabel;
-    private JButton send;
-     JSpinner value;
+    protected JTextField description;
+    
     private JLabel valueLabel;
+    protected JSpinner value;
+    
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
-    JSpinner  spinner;
+    protected JSpinner spinner;
+    
+    private JButton send;
+    
     Account account;
+    
+
 
     /**
      * Creates new form NewTransaction
+     * @param account
      */
     public NewTransaction(Account account) {
         //setLayout(new CardLayout());
@@ -45,31 +55,61 @@ public class NewTransaction extends javax.swing.JPanel implements ActionListener
     void initComponents() {
         
         description = new JTextField();
-        date = new JFormattedTextField();
-        valueLabel = new JLabel();
-        descriptionLabel = new JLabel();
-        DateLabel = new JLabel();
+        date = new JFormattedTextField("date");
+        valueLabel = new JLabel("Valor");
+        descriptionLabel = new JLabel("Descrição");
+        DateLabel = new JLabel("Data");
         send = new JButton("Salvar");
         send.addActionListener(this);
         
         //value = new JFormattedTextField();
-        SpinnerModel model = new SpinnerNumberModel(9.9, 0, 15, 0.1);     
+        double max = 999999999;
+        SpinnerModel model = new SpinnerNumberModel(0, 0, max, 0.01);     
         value = new JSpinner(model);
-        
-        date.setText("date");
-        valueLabel.setText("Valor");
-        descriptionLabel.setText("Descrição");
-        DateLabel.setText("Data");
 
         send.setActionCommand("send");
         
-        add(valueLabel);
-        add(value);
-        add(descriptionLabel);
-        add(description);
-        add(DateLabel);
-        add(date);
-        add(send);
+        total = new JLabel("Saldo Atual:" + account.totalBalance());        
+        title = new JLabel("title");
+
+        title.setFont(new java.awt.Font("Noto Sans", 0, 18));
+        
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title)                    
+                    .addComponent(total)
+                    .addComponent(valueLabel)
+                    .addComponent(descriptionLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(value)
+                        .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.DEFAULT_SIZE)
+                        .addComponent(send)))
+                    .addContainerGap(69,javax.swing.GroupLayout.DEFAULT_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(title)                
+                .addComponent(total)
+
+                .addGap(18, 18, 18)
+                .addComponent(valueLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(descriptionLabel)
+                .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(send)
+                .addContainerGap(151, Short.MAX_VALUE))
+        );
     }
 
     @Override

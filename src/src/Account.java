@@ -21,16 +21,16 @@ public class Account {
         this.expenses = new ArrayList <>();
     }
     
-    public void addIncome(double value, String description) {
+    public String addIncome(double value, String description) {
         Income income = new Income(value, description);
         this.incomes.add(income);
-        System.out.println("Total" + this.sumTotalIncomes());
+        return ("Saldo Atual:" + this.totalBalance());
     }
     
-    public void addExpense(double value, String description) {
+    public String addExpense(double value, String description) {
         Expense expense = new Expense(value, description);
         this.expenses.add(expense);
-        System.out.println("Total" + this.sumTotalExpenses());
+        return ("Saldo Atual:" + this.totalBalance());
     }
     
     public float sumTotalIncomes() {
@@ -50,7 +50,7 @@ public class Account {
         for (Expense expense : this.expenses) {
             sum += expense.getValue();
         }
-        return sum;
+        return -sum;
     }
     
 }

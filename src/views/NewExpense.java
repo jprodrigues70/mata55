@@ -6,9 +6,7 @@
 package views;
 
 import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
 import src.Account;
-import src.Expense;
 
 /**
  *
@@ -18,6 +16,7 @@ public final class NewExpense extends NewTransaction {
 
     /**
      * Creates new form NewExpense
+     * @param account object that represents user account
      */
     public NewExpense(Account account) {
         super(account);
@@ -26,12 +25,13 @@ public final class NewExpense extends NewTransaction {
     @Override
     void initComponents() {
         super.initComponents();
-        //value.setText("Digite o valor da despesa");
+        title.setText("Nova Despesa");
         description.setText("Pra onde foi esse valor?");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       account.addExpense((double)value.getValue(), description.getText());
+       String result = account.addExpense((double)value.getValue(), description.getText());
+       total.setText(result);
     }
 }

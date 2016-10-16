@@ -24,12 +24,13 @@ public final class NewIncome extends NewTransaction {
     @Override
     void initComponents() {
         super.initComponents();
-        //value.setText("Digite o valor da Receita");
+        title.setText("Nova Receita");
         description.setText("De onde veio esse valor?");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       account.addIncome((double)value.getValue(), description.getText());
+       String result = account.addIncome((double)value.getValue(), description.getText());
+       total.setText(result);
     }
 }
