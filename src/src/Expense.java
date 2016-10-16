@@ -11,14 +11,14 @@ package src;
  */
 public class Expense extends Transaction {
 
-    public Expense(float value, String description) {
+    public Expense(double value, String description) {
         super(value, description);
         System.out.println(value);
         System.out.println(description);
     }
 
     @Override
-    public float getValue() {
+    public double getValue() {
         return -1 * super.getValue();
     }
 

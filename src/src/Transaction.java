@@ -10,19 +10,19 @@ package src;
  * @author jpr70
  */
 abstract class Transaction {
-    private float value;
+    private double value;
     private String description;
     
-    Transaction(float value, String description) {
+    Transaction(double value, String description) {
         this.setValue(value);
         this.setDescription(description);
     }
     
-    public final void setValue(float value) {
+    public final void setValue(double value) {
         this.value = value;
     }
     
-    public float getValue() {
+    public double getValue() {
         return this.value;
     }
     

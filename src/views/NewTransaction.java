@@ -10,7 +10,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import src.Account;
 import src.Expense;
 
 /**
@@ -23,15 +27,18 @@ public class NewTransaction extends javax.swing.JPanel implements ActionListener
     JTextField description;
     private JLabel descriptionLabel;
     private JButton send;
-    JFormattedTextField value;
+     JSpinner value;
     private JLabel valueLabel;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    JSpinner  spinner;
+    Account account;
 
     /**
      * Creates new form NewTransaction
      */
-    public NewTransaction() {
+    public NewTransaction(Account account) {
         //setLayout(new CardLayout());
+        this.account = account;
         initComponents();
     }
 
@@ -45,7 +52,9 @@ public class NewTransaction extends javax.swing.JPanel implements ActionListener
         send = new JButton("Salvar");
         send.addActionListener(this);
         
-        value = new JFormattedTextField();
+        //value = new JFormattedTextField();
+        SpinnerModel model = new SpinnerNumberModel(9.9, 0, 15, 0.1);     
+        value = new JSpinner(model);
         
         date.setText("date");
         valueLabel.setText("Valor");
@@ -63,12 +72,8 @@ public class NewTransaction extends javax.swing.JPanel implements ActionListener
         add(send);
     }
 
-    private void sendActionPerformed(java.awt.event.ActionEvent evt) {
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(value.getText());
-       // Expense expense = new Expense((float) value.getValue(), description.getText());
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

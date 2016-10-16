@@ -11,7 +11,7 @@ package src;
  */
 public class Income extends Transaction {
 
-    public Income(float value, String description) {
+    public Income(double value, String description) {
         super(value, description);
     }
     

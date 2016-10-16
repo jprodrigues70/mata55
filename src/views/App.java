@@ -8,6 +8,7 @@ package views;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import src.Account;
 
 /**
  *
@@ -30,9 +31,11 @@ public class App extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
+        
+        Account account = new Account();
 
-        final JPanel nePage = new NewExpense();
-        final JPanel niPage = new NewIncome();
+        final JPanel nePage = new NewExpense(account);
+        final JPanel niPage = new NewIncome(account);
         final Menu menu = new Menu();
 
         ActionListener actionListener = new ActionListener() {

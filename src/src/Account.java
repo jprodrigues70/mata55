@@ -16,14 +16,21 @@ public class Account {
     private final List <Income> incomes;
     private final List <Expense> expenses;
     
-    Account() {
+    public Account() {
         this.incomes = new ArrayList <>();        
         this.expenses = new ArrayList <>();
     }
     
-    public void addIncome(float value, String description) {
+    public void addIncome(double value, String description) {
         Income income = new Income(value, description);
         this.incomes.add(income);
+        System.out.println("Total" + this.sumTotalIncomes());
+    }
+    
+    public void addExpense(double value, String description) {
+        Expense expense = new Expense(value, description);
+        this.expenses.add(expense);
+        System.out.println("Total" + this.sumTotalExpenses());
     }
     
     public float sumTotalIncomes() {
