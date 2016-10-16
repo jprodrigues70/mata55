@@ -20,6 +20,10 @@ public class Account {
         this.incomes = new ArrayList <>();
         this.expenses = new ArrayList <>();
     }
+    
+    public Income getIncome(int id) {
+        return this.incomes.get(id);
+    }
 
     public String addIncome(double value, String description) {
         Income income = new Income(value, description);
@@ -28,6 +32,18 @@ public class Account {
     }
 
     public String addExpense(double value, String description) {
+        Expense expense = new Expense(value, description);
+        this.expenses.add(expense);
+        return ("Saldo Atual:" + this.totalBalance());
+    }
+
+    public String editIncome(double value, String description, int id) {
+        this.incomes.get(id).setDescription(description);        
+        this.incomes.get(id).setValue(value);
+        return ("Saldo Atual:" + this.totalBalance());
+    }
+
+    public String editExpense(double value, String description) {
         Expense expense = new Expense(value, description);
         this.expenses.add(expense);
         return ("Saldo Atual:" + this.totalBalance());

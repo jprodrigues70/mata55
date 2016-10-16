@@ -22,12 +22,12 @@ public class App extends javax.swing.JFrame {
     public App() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
-    
+
     private void initComponents() {
         setTitle("BuyBeans");
-        
+
         final Account account = new Account();
         final JPanel home = new NewIncome(account);
         final Menu menu = new Menu();
@@ -35,23 +35,23 @@ public class App extends javax.swing.JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed( ActionEvent e ) {
-                JPanel panelTrocar = null;
+                JPanel panelSwitch = null;
                 if ( e.getSource() == menu.newIncome ) {
-                    panelTrocar = new NewIncome(account);
-                } 
+                    panelSwitch = new NewIncome(account);
+                }
                 if ( e.getSource() == menu.newExpense ){
-                    panelTrocar = new NewExpense(account);
-                } 
+                    panelSwitch = new NewExpense(account);
+                }
                 if ( e.getSource() == menu.incomesList ){
-                    panelTrocar = new Incomes(account);
-                } 
+                    panelSwitch = new Incomes(account, getContentPane());
+                }
                 if ( e.getSource() == menu.expensesList ){
-                    panelTrocar = new Expenses(account);
+                    panelSwitch = new Expenses(account, getContentPane());
                 }
 
                 getContentPane().removeAll();
 
-                getContentPane().add( panelTrocar );
+                getContentPane().add( panelSwitch );
 
                 revalidate();
                 repaint();

@@ -22,7 +22,7 @@ import src.Income;
  *
  * @author jpr70
  */
-public class NewTransaction extends JPanel implements ActionListener {
+public class EditTransaction extends JPanel implements ActionListener {
     protected JLabel title;
     protected JLabel total;
 
@@ -42,19 +42,26 @@ public class NewTransaction extends JPanel implements ActionListener {
 
     Account account;
     private Income income;
-
+    private int id;
+    
     /**
-     * Creates new form NewTransaction
+     * Creates new form NewExpense
      * @param account
+     * @param id
      */
-    public NewTransaction(Account account) {
-        //setLayout(new CardLayout());
+    public EditTransaction(Account account, int id) {
         this.account = account;
+        this.income = this.account.getIncome(id);
+        this.id = id;
         initComponents();
+    }
+    
+    public int getId(){
+        return this.id;
     }
 
     void initComponents() {
-        description = new JTextField();
+        description = new JTextField(this.income.getDescription());
         date = new JFormattedTextField("date");
         valueLabel = new JLabel("Valor");
         descriptionLabel = new JLabel("Descrição");
@@ -63,7 +70,7 @@ public class NewTransaction extends JPanel implements ActionListener {
         send.addActionListener(this);
 
         double max = 999999999;
-        SpinnerModel model = new SpinnerNumberModel(0, 0, max, 0.01);
+        SpinnerModel model = new SpinnerNumberModel(this.income.getValue(), 0, max, 0.01);
         value = new JSpinner(model);
 
         send.setActionCommand("send");

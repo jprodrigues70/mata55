@@ -10,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import src.Account;
 
 /**
@@ -44,14 +42,6 @@ public class Transactions extends javax.swing.JPanel {
 
         table.getTableHeader().setReorderingAllowed(false);
         scrollPanel.setViewportView(table);
-
-        table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-            public void valueChanged(ListSelectionEvent event) {
-                // do some actions here, for example
-                // print first column value from selected row
-                System.out.println(table.getValueAt(table.getSelectedRow(), 0).toString());
-            }
-        });
 
         GroupLayout panelLayout = new GroupLayout(panel);
         panel.setLayout(panelLayout);

@@ -5,6 +5,8 @@
  */
 package views;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import src.Account;
 
 /**
@@ -12,19 +14,23 @@ import src.Account;
  * @author jpr70
  */
 public class Incomes extends Transactions {
+    java.awt.Container App;
+    
+    
     /**
      * Creates new form NewExpense
      * @param account object that represents user account
      */
-    public Incomes(Account account) {
+    public Incomes(Account account, java.awt.Container App) {
         super(account);
+        this.App = App;
     }
 
     @Override
     protected void initComponents() {
         super.initComponents();
         title.setText("Receitas");
-        
+
         table.setModel(new javax.swing.table.DefaultTableModel(
             account.getIncomesList(),
             new String [] {
@@ -40,5 +46,29 @@ public class Incomes extends Transactions {
                 return types [columnIndex];
             }
         });
+
+
+        table.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                App.removeAll();
+                App.add( new EditIncome(account, table.getSelectedRow()) );
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) { }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
+
+        });
+
     }
 }

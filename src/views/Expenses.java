@@ -5,6 +5,7 @@
  */
 package views;
 
+import java.awt.Container;
 import src.Account;
 
 /**
@@ -12,12 +13,15 @@ import src.Account;
  * @author jpr70
  */
 public class Expenses extends Transactions {
+    java.awt.Container App;
+    
     /**
      * Creates new form NewExpense
      * @param account object that represents user account
      */
-    public Expenses(Account account) {
+    Expenses(Account account, java.awt.Container App) {
         super(account);
+        this.App = App;
     }
 
     @Override
