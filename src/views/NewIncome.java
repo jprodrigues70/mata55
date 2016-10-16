@@ -16,6 +16,7 @@ public final class NewIncome extends NewTransaction {
 
     /**
      * Creates new form NewExpense
+     * @param account
      */
     public NewIncome(Account account) {
         super(account);

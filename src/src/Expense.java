@@ -13,8 +13,6 @@ public class Expense extends Transaction {
 
     public Expense(double value, String description) {
         super(value, description);
-        System.out.println(value);
-        System.out.println(description);
     }
 
     @Override

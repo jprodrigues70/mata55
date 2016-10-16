@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
@@ -20,27 +21,25 @@ import src.Account;
  *
  * @author jpr70
  */
-public class NewTransaction extends javax.swing.JPanel implements ActionListener {
-    protected JLabel title;    
+public class NewTransaction extends JPanel implements ActionListener {
+    protected JLabel title;
     protected JLabel total;
-    
-    private JLabel DateLabel;
+
+    private JLabel dateLabel;
     private JFormattedTextField date;
-    
+
     private JLabel descriptionLabel;
     protected JTextField description;
-    
+
     private JLabel valueLabel;
     protected JSpinner value;
-    
+
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     protected JSpinner spinner;
-    
-    private JButton send;
-    
-    Account account;
-    
 
+    private JButton send;
+
+    Account account;
 
     /**
      * Creates new form NewTransaction
@@ -53,36 +52,34 @@ public class NewTransaction extends javax.swing.JPanel implements ActionListener
     }
 
     void initComponents() {
-        
         description = new JTextField();
         date = new JFormattedTextField("date");
         valueLabel = new JLabel("Valor");
         descriptionLabel = new JLabel("Descrição");
-        DateLabel = new JLabel("Data");
+        dateLabel = new JLabel("Data");
         send = new JButton("Salvar");
         send.addActionListener(this);
-        
-        //value = new JFormattedTextField();
+
         double max = 999999999;
-        SpinnerModel model = new SpinnerNumberModel(0, 0, max, 0.01);     
+        SpinnerModel model = new SpinnerNumberModel(0, 0, max, 0.01);
         value = new JSpinner(model);
 
         send.setActionCommand("send");
-        
-        total = new JLabel("Saldo Atual:" + account.totalBalance());        
+
+        total = new JLabel("Saldo Atual:" + account.totalBalance());
         title = new JLabel("title");
 
         title.setFont(new java.awt.Font("Noto Sans", 0, 18));
-        
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
-        
+
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(title)                    
+                    .addComponent(title)
                     .addComponent(total)
                     .addComponent(valueLabel)
                     .addComponent(descriptionLabel)
@@ -96,7 +93,7 @@ public class NewTransaction extends javax.swing.JPanel implements ActionListener
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(title)                
+                .addComponent(title)
                 .addComponent(total)
 
                 .addGap(18, 18, 18)
@@ -114,6 +111,6 @@ public class NewTransaction extends javax.swing.JPanel implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

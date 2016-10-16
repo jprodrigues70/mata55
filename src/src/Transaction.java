@@ -12,24 +12,24 @@ package src;
 abstract class Transaction {
     private double value;
     private String description;
-    
+
     Transaction(double value, String description) {
         this.setValue(value);
         this.setDescription(description);
     }
-    
+
     public final void setValue(double value) {
         this.value = value;
     }
-    
+
     public double getValue() {
         return this.value;
     }
-    
+
     public final void setDescription(String description) {
         this.description = description;
     }
-    
+
     public String getDescription() {
         return this.description;
     }
