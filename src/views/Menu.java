@@ -17,6 +17,7 @@ import javax.swing.JMenuItem;
 public final class Menu extends javax.swing.JFrame {
     private JMenu expenses;
     private JMenu incomes;
+    
     private JMenu nav;
     private JMenuBar menu;
     
@@ -24,49 +25,49 @@ public final class Menu extends javax.swing.JFrame {
     protected JMenuItem expensesList;    
     protected JMenuItem incomesList;
     protected JMenuItem newIncome;
+    
+    protected JMenuItem homePage;
 
 
     Menu() {
     }
 
     /**
-     *
+     * Navigation menu config
      * @param actionListener
      * @return
      */
     public JMenuBar init(ActionListener actionListener) {
 
         menu = new JMenuBar();
-        nav = new JMenu();     
         
-        expenses = new JMenu();
-        expensesList = new JMenuItem();   
-        newExpense = new JMenuItem();
-
-        incomes = new JMenu();
-        incomesList = new JMenuItem();        
-        newIncome = new JMenuItem();
-
+        homePage = new JMenuItem("Início");  
         
-        expensesList.setText("Exibir");
+        expenses = new JMenu("Despesas");
+        expensesList = new JMenuItem("Exibir");   
+        newExpense = new JMenuItem("Nova Despesa");
+
+        incomes = new JMenu("Receitas");
+        incomesList = new JMenuItem("Exibir");        
+        newIncome = new JMenuItem("Nova Receita");
+        
         expensesList.addActionListener( actionListener );
-        newExpense.setText("Nova Despesa");
         newExpense.addActionListener( actionListener );
         expenses.add(expensesList);        
         expenses.add(newExpense);
         
-        incomesList.setText("Exibir");
+        
         incomesList.addActionListener( actionListener );
-        newIncome.setText("Nova Receita");
         newIncome.addActionListener( actionListener );
         incomes.add(incomesList);        
         incomes.add(newIncome);
-
-
-        incomes.setText("Receitas");
+        
+        homePage.addActionListener( actionListener );
+        
+        menu.add(homePage);
+        
         menu.add(incomes);
 
-        expenses.setText("Despesas");
         menu.add(expenses);
 
         return menu;

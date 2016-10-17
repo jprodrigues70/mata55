@@ -34,7 +34,7 @@ public class BuyBeans {
             java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        /* Create and display the form */
+        /* Create and display the App*/
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {

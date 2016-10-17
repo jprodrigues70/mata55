@@ -40,7 +40,7 @@ public abstract class NewTransaction extends JPanel implements ActionListener {
 
     private JButton send;
 
-    Account account;
+    protected Account account;
     private Income income;
 
     /**

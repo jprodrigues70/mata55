@@ -14,7 +14,7 @@ import src.Account;
  * @author jpr70
  */
 public class Incomes extends Transactions {
-    java.awt.Container App;
+    private java.awt.Container App;
     
     
     /**
@@ -55,7 +55,7 @@ public class Incomes extends Transactions {
             @Override
             public void mouseClicked(MouseEvent e) {
                 App.removeAll();
-                App.add( new EditIncome(account, table.getSelectedRow()) );
+                App.add( new EditIncome(account, table.getSelectedRow(), App) );
             }
 
             @Override

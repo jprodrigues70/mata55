@@ -114,7 +114,7 @@ public abstract class EditTransaction extends JPanel implements ActionListener {
 
 
         double max = 999999999;
-        SpinnerModel model = null;
+        SpinnerModel model;
         
         /**
          * Value value based on owner of operation

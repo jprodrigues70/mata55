@@ -29,9 +29,13 @@ public class App extends javax.swing.JFrame {
         setTitle("BuyBeans");
 
         final Account account = new Account();
-        final JPanel home = new NewIncome(account);
+        final JPanel myHome = new Home(account);
+        
         final Menu menu = new Menu();
 
+        /**
+         * Listen menu action to load a specific page
+         */
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed( ActionEvent e ) {
@@ -48,6 +52,9 @@ public class App extends javax.swing.JFrame {
                 if ( e.getSource() == menu.expensesList ){
                     panelSwitch = new Expenses(account, getContentPane());
                 }
+                if ( e.getSource() == menu.homePage ) {
+                    panelSwitch = new Home(account);
+                }
 
                 getContentPane().removeAll();
 
@@ -56,13 +63,22 @@ public class App extends javax.swing.JFrame {
                 revalidate();
                 repaint();
             }
-
         };
-
+        
+        /**
+         * Call menu initializer
+         */
         setJMenuBar(menu.init(actionListener));
-        add( home );
-
+        /**
+         * Defines the first app page
+         */
+        add( myHome );
+        
+        /**
+         * Defines what happens when app is closed
+         */
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
         pack();
     }
 }

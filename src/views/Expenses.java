@@ -5,7 +5,6 @@
  */
 package views;
 
-import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import src.Account;
@@ -56,7 +55,7 @@ public class Expenses extends Transactions {
             @Override
             public void mouseClicked(MouseEvent e) {
                 App.removeAll();
-                App.add( new EditExpense(account, table.getSelectedRow()) );
+                App.add( new EditExpense(account, table.getSelectedRow(), App) );
             }
 
             @Override

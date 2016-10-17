@@ -17,7 +17,7 @@ import src.Account;
  * @author jpr70
  */
 public class Transactions extends javax.swing.JPanel {
-    Account account;
+    protected Account account;
     private JPanel panel;
     private JScrollPane scrollPanel;
     protected JTable table;
