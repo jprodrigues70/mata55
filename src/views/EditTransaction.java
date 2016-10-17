@@ -62,11 +62,19 @@ public abstract class EditTransaction extends JPanel implements ActionListener {
         verifyType(type);
         initComponents();
     }
-
+    
+    /**
+     * 
+     * @return int
+     */
     public int getId(){
         return this.id;
     }
-
+    
+    /**
+     * Verify if it's a income operation or expense operation
+     * @param type 
+     */
     public void verifyType(int type) {
         if (type == 1) {
             this.income = this.account.getIncome(id);
@@ -76,9 +84,15 @@ public abstract class EditTransaction extends JPanel implements ActionListener {
             this.income = null;
         }
     }
-
+    
+    /**
+     * Starts the Form components
+     */
     void initComponents() {
         description = new JTextField();
+        /**
+         * Description text based on owner of operation
+         */
         if (this.income != null) {
             description.setText(this.income.getDescription());
         } else {
@@ -101,6 +115,10 @@ public abstract class EditTransaction extends JPanel implements ActionListener {
 
         double max = 999999999;
         SpinnerModel model = null;
+        
+        /**
+         * Value value based on owner of operation
+         */
         if (this.income != null) {
             model = new SpinnerNumberModel(this.income.getValue(), 0, max, 0.01);
         } else {
@@ -114,10 +132,13 @@ public abstract class EditTransaction extends JPanel implements ActionListener {
         title = new JLabel("title");
 
         title.setFont(new java.awt.Font("Noto Sans", 0, 18));
-
+        
+        /**
+         * Layout Config
+         */
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
-
+        
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()

@@ -31,7 +31,10 @@ public class Transactions extends javax.swing.JPanel {
         this.account = account;
         initComponents();
     }
-
+    
+    /**
+     * Layout Config
+     */
     @SuppressWarnings("unchecked")
     protected void initComponents() {
         panel = new JPanel();

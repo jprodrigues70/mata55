@@ -26,6 +26,9 @@ public class Expenses extends Transactions {
         this.App = App;
     }
 
+    /**
+     * Table Layout Config
+     */
     @Override
     protected void initComponents() {
         super.initComponents();

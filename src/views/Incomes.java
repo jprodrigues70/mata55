@@ -25,7 +25,10 @@ public class Incomes extends Transactions {
         super(account);
         this.App = App;
     }
-
+    
+    /**
+     * Table Layout Config
+     */
     @Override
     protected void initComponents() {
         super.initComponents();

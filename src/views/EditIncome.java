@@ -26,7 +26,11 @@ public final class EditIncome extends EditTransaction {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-       String result = account.editIncome((double)value.getValue(), description.getText(), this.getId());
-       total.setText(result);
+        if(e.getActionCommand() == "send") {
+            String result = account.editIncome((double)value.getValue(), description.getText(), this.getId());
+            total.setText(result);
+        } else if(e.getActionCommand() == "delete") {
+            account.deleteIncome(this.getId());
+        }
     }
 }

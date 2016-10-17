@@ -23,11 +23,19 @@ public final class EditExpense extends EditTransaction {
         super(account, id, 2);
         title.setText("Editar Despesa");
     }
-
+    
+    /**
+     * Indify the next step. Delete or Update/Create
+     * @param e event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
+        String result;
         if(e.getActionCommand() == "send") {
-            String result = account.editExpense((double)value.getValue(), description.getText(), this.getId());
+            result = account.editExpense((double)value.getValue(), description.getText(), this.getId());
+            /**
+             * Atualiza o total na página de edição, e na de criação
+             */
             total.setText(result);
         } else if(e.getActionCommand() == "delete") {
             account.deleteExpense(this.getId());

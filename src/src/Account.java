@@ -21,40 +21,86 @@ public class Account {
         this.expenses = new ArrayList <>();
     }
     
+    /**
+     * 
+     * @param id 
+     * @return Income
+     */
     public Income getIncome(int id) {
         return this.incomes.get(id);
     }
     
+    /**
+     * 
+     * @param id
+     * @return Expense
+     */
     public Expense getExpense(int id) {
         return this.expenses.get(id);
     }
     
+    /**
+     * 
+     * @param id 
+     * @return void
+     */
     public void deleteExpense(int id) {
         this.expenses.remove(id);
     }
     
+    /**
+     * 
+     * @param id 
+     * @return void
+     */
     public void deleteIncome(int id) {
         this.incomes.remove(id);
     }
 
+    /**
+     * 
+     * @param value double
+     * @param description String
+     * @return String
+     */
     public String addIncome(double value, String description) {
         Income income = new Income(value, description);
         this.incomes.add(income);
         return ("Saldo Atual:" + this.totalBalance());
     }
 
+    /**
+     * 
+     * @param value double
+     * @param description String
+     * @return String
+     */
     public String addExpense(double value, String description) {
         Expense expense = new Expense(value, description);
         this.expenses.add(expense);
         return ("Saldo Atual:" + this.totalBalance());
     }
-
+    
+    /**
+     * 
+     * @param value double
+     * @param description String
+     * @param id int
+     * @return String
+     */
     public String editIncome(double value, String description, int id) {
         this.incomes.get(id).setDescription(description);        
         this.incomes.get(id).setValue(value);
         return ("Saldo Atual:" + this.totalBalance());
     }
-
+    
+    /**
+     * 
+     * @param value double
+     * @param description String
+     * @param id int
+     * @return String
+     */
     public String editExpense(double value, String description, int id) {
         this.expenses.get(id).setDescription(description);        
         this.expenses.get(id).setValue(value);
@@ -98,6 +144,10 @@ public class Account {
         return ob;
     }
 
+    /**
+     * 
+     * @return float that represents the sum of all Incomes
+     */
     public float sumTotalIncomes() {
         float sum = 0;
         for (Income income : this.incomes) {
@@ -105,11 +155,19 @@ public class Account {
         }
         return sum;
     }
-
+    
+    /**
+     * 
+     * @return float that represents Total incomes - Total expenses
+     */
     public float totalBalance() {
         return sumTotalIncomes() - sumTotalExpenses();
     }
-
+    
+    /**
+     * 
+     * @return float that represents the sum of all Expenses
+     */
     public float sumTotalExpenses() {
         float sum = 0;
         for (Expense expense : this.expenses) {

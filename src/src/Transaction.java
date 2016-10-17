@@ -17,19 +17,35 @@ abstract class Transaction {
         this.setValue(value);
         this.setDescription(description);
     }
-
+    
+    /**
+     * 
+     * @param value double
+     */
     public final void setValue(double value) {
         this.value = value;
     }
-
+    
+    /**
+     * 
+     * @return double
+     */
     public double getValue() {
         return this.value;
     }
-
+    
+    /**
+     * 
+     * @param description String
+     */
     public final void setDescription(String description) {
         this.description = description;
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
     public String getDescription() {
         return this.description;
     }
