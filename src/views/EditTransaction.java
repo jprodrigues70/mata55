@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import src.Account;
+import src.Expense;
 import src.Income;
 
 /**
@@ -41,28 +42,46 @@ public class EditTransaction extends JPanel implements ActionListener {
     private JButton send;
 
     Account account;
-    private Income income;
+    private Income income;    
+    private Expense expense;
+
     private int id;
     
     /**
      * Creates new form NewExpense
      * @param account
      * @param id
+     * @param type
      */
-    public EditTransaction(Account account, int id) {
+    public EditTransaction(Account account, int id, int type) {
         this.account = account;
-        this.income = this.account.getIncome(id);
         this.id = id;
+        verifyType(type);
         initComponents();
     }
     
     public int getId(){
         return this.id;
     }
+    
+    public void verifyType(int type) {
+        if (type == 1) {
+            this.income = this.account.getIncome(id);
+            this.expense = null;
+        } else {
+            this.expense = this.account.getExpense(id);
+            this.income = null;
+        }
+    }
 
     void initComponents() {
-        description = new JTextField(this.income.getDescription());
-        date = new JFormattedTextField("date");
+        description = new JTextField();
+        if (this.income != null) {
+            description.setText(this.income.getDescription());
+        } else {            
+            description.setText(this.expense.getDescription());
+        }
+        
         valueLabel = new JLabel("Valor");
         descriptionLabel = new JLabel("Descrição");
         dateLabel = new JLabel("Data");
@@ -70,7 +89,13 @@ public class EditTransaction extends JPanel implements ActionListener {
         send.addActionListener(this);
 
         double max = 999999999;
-        SpinnerModel model = new SpinnerNumberModel(this.income.getValue(), 0, max, 0.01);
+        SpinnerModel model = null;
+        if (this.income != null) {
+            model = new SpinnerNumberModel(this.income.getValue(), 0, max, 0.01);
+        } else {
+            model = new SpinnerNumberModel(this.expense.getValue(), 0, max, 0.01);
+        }
+        
         value = new JSpinner(model);
 
         send.setActionCommand("send");

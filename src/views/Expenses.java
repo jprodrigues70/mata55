@@ -6,6 +6,8 @@
 package views;
 
 import java.awt.Container;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import src.Account;
 
 /**
@@ -44,6 +46,28 @@ public class Expenses extends Transactions {
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+        });
+
+        table.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                App.removeAll();
+                App.add( new EditExpense(account, table.getSelectedRow()) );
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) { }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
+
         });
     }
 }

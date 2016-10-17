@@ -47,7 +47,6 @@ public class Incomes extends Transactions {
             }
         });
 
-
         table.addMouseListener(new MouseListener() {
 
             @Override

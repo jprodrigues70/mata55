@@ -17,7 +17,7 @@ public class Expense extends Transaction {
 
     @Override
     public double getValue() {
-        return -1 * super.getValue();
+        return super.getValue();
     }
 
 }

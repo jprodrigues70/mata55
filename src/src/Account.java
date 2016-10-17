@@ -24,6 +24,10 @@ public class Account {
     public Income getIncome(int id) {
         return this.incomes.get(id);
     }
+    
+    public Expense getExpense(int id) {
+        return this.expenses.get(id);
+    }
 
     public String addIncome(double value, String description) {
         Income income = new Income(value, description);
@@ -43,9 +47,9 @@ public class Account {
         return ("Saldo Atual:" + this.totalBalance());
     }
 
-    public String editExpense(double value, String description) {
-        Expense expense = new Expense(value, description);
-        this.expenses.add(expense);
+    public String editExpense(double value, String description, int id) {
+        this.expenses.get(id).setDescription(description);        
+        this.expenses.get(id).setValue(value);
         return ("Saldo Atual:" + this.totalBalance());
     }
     
@@ -103,7 +107,7 @@ public class Account {
         for (Expense expense : this.expenses) {
             sum += expense.getValue();
         }
-        return -sum;
+        return sum;
     }
 
 }

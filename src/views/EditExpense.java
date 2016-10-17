@@ -12,20 +12,20 @@ import src.Account;
  *
  * @author jpr70
  */
-public final class EditIncome extends EditTransaction {
+public final class EditExpense extends EditTransaction {
     private int id;
     /**
      * Creates new form NewExpense
      * @param account
      * @param id
      */
-    public EditIncome(Account account, int id) {
-        super(account, id, 1);
+    public EditExpense(Account account, int id) {
+        super(account, id, 2);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-       String result = account.editIncome((double)value.getValue(), description.getText(), this.getId());
+       String result = account.editExpense((double)value.getValue(), description.getText(), this.getId());
        total.setText(result);
     }
 }
