@@ -21,11 +21,16 @@ public final class EditExpense extends EditTransaction {
      */
     public EditExpense(Account account, int id) {
         super(account, id, 2);
+        title.setText("Editar Despesa");
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-       String result = account.editExpense((double)value.getValue(), description.getText(), this.getId());
-       total.setText(result);
+        if(e.getActionCommand() == "send") {
+            String result = account.editExpense((double)value.getValue(), description.getText(), this.getId());
+            total.setText(result);
+        } else if(e.getActionCommand() == "delete") {
+            account.deleteExpense(this.getId());
+        }
     }
 }

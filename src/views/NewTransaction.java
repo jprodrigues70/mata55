@@ -22,7 +22,7 @@ import src.Income;
  *
  * @author jpr70
  */
-public class NewTransaction extends JPanel implements ActionListener {
+public abstract class NewTransaction extends JPanel implements ActionListener {
     protected JLabel title;
     protected JLabel total;
 
@@ -113,6 +113,6 @@ public class NewTransaction extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Não suportado..");
     }
 }

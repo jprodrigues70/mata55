@@ -23,7 +23,7 @@ import src.Income;
  *
  * @author jpr70
  */
-public class EditTransaction extends JPanel implements ActionListener {
+public abstract class EditTransaction extends JPanel implements ActionListener {
     protected JLabel title;
     protected JLabel total;
 
@@ -39,14 +39,17 @@ public class EditTransaction extends JPanel implements ActionListener {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     protected JSpinner spinner;
 
-    private JButton send;
+    private JButton send;    
+    
+    private JButton delete;
+
 
     Account account;
-    private Income income;    
+    private Income income;
     private Expense expense;
 
     private int id;
-    
+
     /**
      * Creates new form NewExpense
      * @param account
@@ -59,11 +62,11 @@ public class EditTransaction extends JPanel implements ActionListener {
         verifyType(type);
         initComponents();
     }
-    
+
     public int getId(){
         return this.id;
     }
-    
+
     public void verifyType(int type) {
         if (type == 1) {
             this.income = this.account.getIncome(id);
@@ -78,15 +81,23 @@ public class EditTransaction extends JPanel implements ActionListener {
         description = new JTextField();
         if (this.income != null) {
             description.setText(this.income.getDescription());
-        } else {            
+        } else {
             description.setText(this.expense.getDescription());
         }
-        
+
         valueLabel = new JLabel("Valor");
         descriptionLabel = new JLabel("Descrição");
         dateLabel = new JLabel("Data");
-        send = new JButton("Salvar");
+        
+        send = new JButton("Salvar");        
+        delete = new JButton("Excluir");
+
         send.addActionListener(this);
+        delete.addActionListener(this);
+
+        send.setActionCommand("send");       
+        delete.setActionCommand("delete");
+
 
         double max = 999999999;
         SpinnerModel model = null;
@@ -95,10 +106,9 @@ public class EditTransaction extends JPanel implements ActionListener {
         } else {
             model = new SpinnerNumberModel(this.expense.getValue(), 0, max, 0.01);
         }
-        
+
         value = new JSpinner(model);
 
-        send.setActionCommand("send");
 
         total = new JLabel("Saldo Atual:" + account.totalBalance());
         title = new JLabel("title");
@@ -113,7 +123,8 @@ public class EditTransaction extends JPanel implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(title)
+                    .addComponent(title)                    
+                    .addComponent(delete)
                     .addComponent(total)
                     .addComponent(valueLabel)
                     .addComponent(descriptionLabel)
@@ -128,7 +139,9 @@ public class EditTransaction extends JPanel implements ActionListener {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(title)
-                .addComponent(total)
+                .addComponent(total)                
+                .addComponent(delete)
+
 
                 .addGap(18, 18, 18)
                 .addComponent(valueLabel)
@@ -145,6 +158,6 @@ public class EditTransaction extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Não suportado..");
     }
 }

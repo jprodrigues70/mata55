@@ -21,6 +21,7 @@ public final class EditIncome extends EditTransaction {
      */
     public EditIncome(Account account, int id) {
         super(account, id, 1);
+        title.setText("Editar Receita");
     }
     
     @Override

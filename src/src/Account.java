@@ -28,6 +28,14 @@ public class Account {
     public Expense getExpense(int id) {
         return this.expenses.get(id);
     }
+    
+    public void deleteExpense(int id) {
+        this.expenses.remove(id);
+    }
+    
+    public void deleteIncome(int id) {
+        this.incomes.remove(id);
+    }
 
     public String addIncome(double value, String description) {
         Income income = new Income(value, description);
